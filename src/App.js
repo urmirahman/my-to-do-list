@@ -1,36 +1,21 @@
-import { Container } from "@material-ui/core";
+import React, { useState } from "react";
+import { Container ,Button} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import {useMediaQuery} from '@material-ui/core'
+import { useMediaQuery } from "@material-ui/core";
 function App() {
-  const classes = useStyles();
-  const matches = useMediaQuery('(min-width:600px)')
+  const [taskType, setTaskType] = useState([
+    {name:'abe'}, {name:'fsd'}, {name:'abdsfssde'},
+  ]);
+  //localStorage.setItem("lastname", JSON.stringify(taskType));
+  //let separte = localStorage.getItem("lastname").split('][')
+  console.log(JSON.parse(localStorage.getItem("lastname")))
   return (
     <div className="App">
-      <Container className={` ${matches ? classes.container : classes.testMedia} `}> dssdf dfsdfsdfsdfsd</Container>
+      <Container>{taskType.map((type)=>(<h1>{type.name}</h1>))}
+      <Button onClick={(e)=>{e.preventDefault(); setTaskType(prevtype =>([...prevtype , {name:'new type'}]));  localStorage.setItem("lastname", JSON.stringify(taskType));} } variant="contained" color="primary">Add new</Button>
+      </Container>
     </div>
   );
 }
 
 export default App;
-
-const useStyles = makeStyles({
-  container: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    width : 600,
-    padding: '0 30px',
-  },
-  testMedia:{
-    background: 'linear-gradient(45deg, blue 30%, indigo 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-  }
-});
