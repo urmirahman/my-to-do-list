@@ -2,38 +2,27 @@ import React, { useState, useEffect } from "react";
 import { Container, Button } from "@material-ui/core";
 export const Rought = () => {
  
-let value = JSON.parse(localStorage.getItem("p")) === null ? [{name:"firstvalue"}] : JSON.parse(localStorage.getItem("p"))
+let value = JSON.parse(localStorage.getItem("tasklist")) === null ? [{name:"firstitem"}] : JSON.parse(localStorage.getItem("tasklist"))
   const [test, settest] = useState(value);
 
-
-  let temo = []
   useEffect(() => {
-    
-    
-    let localstorage = JSON.parse(localStorage.getItem("tasks"));
-    if (localstorage.length < test.length) {
-      localStorage.setItem("p", JSON.stringify(test));
-      temo = JSON.parse(localStorage.getItem("p"))
-    }
+    localStorage.setItem("tasklist", JSON.stringify(test));
     console.log(value)
-    console.log(localstorage);
-     console.log(JSON.parse(localStorage.getItem("p")))
+  
+     console.log(JSON.parse(localStorage.getItem("tasklist")))
     console.log(test);
   }, [test]);
 
   const handleClick = (e) => {
     e.preventDefault();
     settest((old) => [...old, { name: "hey" }])
-   localStorage.setItem("tasks", JSON.stringify(test));
+   
   };
 
   const handleremove = (e) => {
     e.preventDefault();
-   localStorage.removeItem("p")
-    console.log(localStorage)
-   let p = [{name:"new"},]
-  //  localStorage.setItem("p", JSON.stringify(p));
-  //  console.log(JSON.parse(localStorage.getItem("p")))
+   localStorage.removeItem("tasklist")
+   let p = [{name:"new "},]
    settest(p)
   };
   return (
