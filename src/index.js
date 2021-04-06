@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Rought } from './components/Rought';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+ <Rought/>
   </React.StrictMode>,
   document.getElementById('root')
 );
