@@ -3,7 +3,8 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-export const InputText = () => {
+
+export const InputText = (props) => {
   const classes = userStyles();
   const [state, setState] = useState([""]);
 
@@ -17,10 +18,10 @@ export const InputText = () => {
   };
 
   return (
-    <>
+
       <TextField
-        onKeyDown={(e) => handlekey(e)}
-        onChange={(e) => handleChnage(e)}
+        onKeyDown={props.onkeydown}
+        onChange={props.onchange}
         id="outlined-full-width"
         InputProps={{
           startAdornment: (
@@ -38,7 +39,7 @@ export const InputText = () => {
         }}
         variant="outlined"
       />
-    </>
+    
   );
 };
 

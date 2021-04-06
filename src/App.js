@@ -6,11 +6,12 @@ import { InputText } from "./components/InputText";
 import { IncompleteTask } from "./components/IncompleteTask";
 import { CompletedTask } from "./components/CompletedTask";
 import Rough from "./components/Rough";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
     <Container className="App">
-      <InputText />
+     <Home/>
     </Container>
   );
 }
