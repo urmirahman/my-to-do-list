@@ -9,7 +9,7 @@ export const InputText = () => {
 
   const handlekey = (e) => {
       setState(old =>([...old,"hey"]))
-      ///console.log(state);
+      console.log(state);
   };
   const handleChnage = (e) => {
     setState(e.target.value);
