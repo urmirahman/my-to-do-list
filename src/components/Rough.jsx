@@ -4,16 +4,17 @@ import { TextField } from "@material-ui/core";
 const Rough = () => {
   const [state, setState] = useState('');
     
-  const handlekey = (event) => {
-    console.log(state)
-  };
-  const handleChnage = (e) => {
-    setState(e.target.value)
-    console.log(state)
-    if(e.key === "Enter"){
-      console.log(state+" enter key ")
+  const handlekey = (e) => {
+    if(e.key ==="Enter"){
+      setState(e.target.value)
+      console.log(state)
 
     }
+  };
+  const handleChnage = (e) => {
+    //setState(e.target.value)
+    console.log(state)
+   
   };
     
 
