@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 export const InputText = () => {
-
+  const classes = userStyles();
   return (
     <form>
       <TextField
@@ -29,3 +29,14 @@ export const InputText = () => {
     </form>
   );
 };
+
+const userStyles = makeStyles({
+  "@global": {
+    // You should target [class*="MuiButton-root"] instead if you nest themes.
+    ".MuiOutlinedInput-input": {
+      padding: "10px 15px 10px 15px !important",
+    },
+  },
+
+ 
+});
