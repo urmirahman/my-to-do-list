@@ -1,9 +1,10 @@
+import { Button } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { IncompleteTask } from '../components/IncompleteTask';
 import { InputText } from '../components/InputText';
 
 export const Home = () => {
-    let value = JSON.parse(localStorage.getItem("tasklist")) === null ? [{name:""}] : JSON.parse(localStorage.getItem("tasklist"))
+    let value = JSON.parse(localStorage.getItem("tasklist")) === null ? [] : JSON.parse(localStorage.getItem("tasklist"))
     const [state, setState] = useState(value);
 
     useEffect(() => {
@@ -11,7 +12,7 @@ export const Home = () => {
         //console.log(value)
       
          console.log(JSON.parse(localStorage.getItem("tasklist")))
-        console.log(state);
+        console.log(state.length);
       }, [state]);
 
     const handlekey = (e) => {
@@ -22,15 +23,17 @@ export const Home = () => {
         }
         
     };
-    const handleChnage = (e) => {
-     // setState(e.target.value);
-      console.log("onshnage");
-    };
+    const handleremove = (e) => {
+        e.preventDefault();
+       localStorage.removeItem("tasklist")
+       let p = []
+       setState(p)
+      };
     return (
         <div>
             <InputText  onkeydown={handlekey}/>
-            {state.map(data=>(<div><IncompleteTask/></div>))}
-           
+            {state.length > 0 && state.map(data=>(<div><IncompleteTask taskname={data.name}/></div>))}
+           <Button onClick={handleremove} varient="secondary">remove</Button>
         </div>
     )
 }

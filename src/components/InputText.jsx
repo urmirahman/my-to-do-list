@@ -38,6 +38,7 @@ const userStyles = makeStyles({
     // You should target [class*="MuiButton-root"] instead if you nest themes.
     ".MuiOutlinedInput-input": {
       padding: "10px 15px 10px 15px !important",
+      
     },
   },
 });
