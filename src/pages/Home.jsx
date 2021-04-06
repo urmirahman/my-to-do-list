@@ -33,7 +33,7 @@ export const Home = () => {
         <div>
             <InputText  onkeydown={handlekey}/>
             {state.length > 0 && state.map(data=>(<div><IncompleteTask taskname={data.name}/></div>))}
-           <Button onClick={handleremove} varient="secondary">remove</Button>
+           <Button onClick={handleremove} variant="contained" color="secondary">remove</Button>
         </div>
     )
 }

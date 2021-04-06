@@ -8,7 +8,7 @@ export const IncompleteTask = ({taskname}) => {
     
     return (
         <Box  className={`${classes.box} ${classes.incomplete}`} p={1} display="flex" bgcolor="blue"alignItems="center">
-            <CheckCircleOutlineOutlinedIcon OnClick className={classes.icon}/>
+            <CheckCircleOutlineOutlinedIcon onClick className={classes.icon}/>
          {taskname}
         </Box>
     )
