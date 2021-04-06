@@ -6,16 +6,7 @@ import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 
 export const InputText = (props) => {
   const classes = userStyles();
-  const [state, setState] = useState([""]);
 
-  const handlekey = (e) => {
-      setState(old =>([...old,"hey"]))
-      console.log(state);
-  };
-  const handleChnage = (e) => {
-    setState(e.target.value);
-    console.log(state);
-  };
 
   return (
 
