@@ -5,11 +5,12 @@ import { useMediaQuery } from "@material-ui/core";
 import { InputText } from "./components/InputText";
 import { IncompleteTask } from "./components/IncompleteTask";
 import { CompletedTask } from "./components/CompletedTask";
+import Rough from "./components/Rough";
 
 function App() {
   return (
     <Container className="App">
-     <CompletedTask/>
+     <Rough/>
     </Container>
   );
 }
