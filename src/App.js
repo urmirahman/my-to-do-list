@@ -10,7 +10,7 @@ import Rough from "./components/Rough";
 function App() {
   return (
     <Container className="App">
-     <Rough/>
+      <InputText />
     </Container>
   );
 }

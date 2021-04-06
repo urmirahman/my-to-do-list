@@ -5,28 +5,23 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 export const InputText = () => {
   const classes = userStyles();
-  const [values,setvalues] = useState('')
+  const [state, setState] = useState([""]);
 
-  const handleChange = (e) =>{
-      e.preventDefault()
-      setvalues(e.key)
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setvalues(e.key)
-    if (e.key === "Enter") {
-      console.log(values);
-    }
+  const handlekey = (e) => {
+      setState(old =>([...old,"hey"]))
+      ///console.log(state);
+  };
+  const handleChnage = (e) => {
+    setState(e.target.value);
+    console.log(state);
   };
 
   return (
-    <form>
+    <>
       <TextField
-      type="text"
-        onKeyPress={(e) => handleSubmit(e)}
-        name="tasks"
+        onKeyDown={(e) => handlekey(e)}
+        onChange={(e) => handleChnage(e)}
         id="outlined-full-width"
-        label="tasks"
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -43,7 +38,7 @@ export const InputText = () => {
         }}
         variant="outlined"
       />
-    </form>
+    </>
   );
 };
 

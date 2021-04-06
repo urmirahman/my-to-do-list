@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-  
+import { TextField } from "@material-ui/core";
 const Rough = () => {
   const [state, setState] = useState('');
     
@@ -25,7 +25,7 @@ const Rough = () => {
   
         
       {/* Passing the key pressed to the handler function */}
-      <input type="text" onKeyDown={handlekey} onChange={(e) => handleChnage(e)}  />
+      <TextField type="text" onKeyDown={handlekey} onChange={(e) => handleChnage(e)}  />
         
     </div>
   );
