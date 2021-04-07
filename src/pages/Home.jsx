@@ -5,34 +5,45 @@ import { InputText } from '../components/InputText';
 
 export const Home = () => {
     let value = JSON.parse(localStorage.getItem("tasklist")) === null ? [] : JSON.parse(localStorage.getItem("tasklist"))
-    const [state, setState] = useState(value);
-
+    let value2 = JSON.parse(localStorage.getItem("completeTask")) === null ? [] : JSON.parse(localStorage.getItem("completeTask"))
+    const [incompleteTask, setIncompleteTask] = useState(value);
+    const [completeTask, setCompleteTask] = useState(value2);
+   
     useEffect(() => {
-        localStorage.setItem("tasklist", JSON.stringify(state));
+        localStorage.setItem("tasklist", JSON.stringify(incompleteTask));
         //console.log(value)
-      
+        localStorage.setItem("completeTask", JSON.stringify(completeTask));
+        console.log(completeTask)
          console.log(JSON.parse(localStorage.getItem("tasklist")))
-        console.log(state.length);
-      }, [state]);
+        //console.log(incompleteTask.length);
+      }, [incompleteTask,completeTask]);
 
+      const AddComplteTask = (taskname,index) => {
+        setCompleteTask((old) => [...old , { name: taskname }]);
+        incompleteTask.splice(index,1)
+       // console.log(incompleteTask)
+      };
+    
     const handlekey = (e) => {
         let temp = e.target.value
         if(e.key === "Enter"){
-            setState((old) => [...old, { name: temp }])
-            console.log(state);
+            setIncompleteTask((old) => [...old, { name: temp }])
+            console.log(incompleteTask);
         }
         
     };
     const handleremove = (e) => {
         e.preventDefault();
-       localStorage.removeItem("tasklist")
+    //    localStorage.removeItem("tasklist")
        let p = []
-       setState(p)
+       setCompleteTask(p)
       };
+
+
     return (
         <div>
             <InputText  onkeydown={handlekey}/>
-            {state.length > 0 && state.map(data=>(<div><IncompleteTask taskname={data.name}/></div>))}
+            {incompleteTask.length > 0 && incompleteTask.map((data,index)=>(<div key={index}><IncompleteTask AddComplteTask={()=>AddComplteTask(data.name,index)} taskname={data.name}/></div>))}
            <Button onClick={handleremove} variant="contained" color="secondary">remove</Button>
         </div>
     )
