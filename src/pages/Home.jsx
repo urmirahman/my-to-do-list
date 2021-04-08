@@ -17,19 +17,33 @@ export const Home = () => {
       : JSON.parse(localStorage.getItem("completeTask"));
   const [incompleteTask, setIncompleteTask] = useState(value);
   const [completeTask, setCompleteTask] = useState(value2);
+  const [Recyclebean, setRecyclebean] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("tasklist", JSON.stringify(incompleteTask));
     localStorage.setItem("completeTask", JSON.stringify(completeTask));
     console.log(completeTask);
-    console.log(incompleteTask.length);
+    console.log(Recyclebean);
   }, [incompleteTask, completeTask]);
 
   const AddComplteTask = (taskname, index) => {
     setCompleteTask((old) => [...old, { name: taskname }]);
     incompleteTask.splice(index, 1);
   };
-
+  const BacktoIncompltetasks = (taskname, index) => {
+    setIncompleteTask((old) => [...old, { name: taskname }]);
+    completeTask.splice(index, 1);
+    console.log("back to complte")
+  };
+  const RemoveCompletTasks = (taskname, index) => {
+    setRecyclebean((old) => [...old, { name: taskname, status: "complete" }]);
+    completeTask.splice(index, 1);
+    console.log("removecomplte")
+  };
+  const RemoveInCompleteTask = (taskname, index) => {
+    setRecyclebean((old) => [...old, { name: taskname, status: "incomplete" }]);
+    incompleteTask.splice(index, 1);
+  };
   const handlekey = (e) => {
     let temp = e.target.value;
     if (e.key === "Enter") {
@@ -47,11 +61,18 @@ export const Home = () => {
   return (
     <div>
       <InputText onkeydown={handlekey} />
+      <div className={classes.dividerTag}>
+        <Chip label="Tasks..." />{" "}
+        <Divider className={classes.divider} component="li" variant="inset" />
+      </div>
       {incompleteTask.length > 0 &&
         incompleteTask.map((data, index) => (
           <div key={index}>
             <IncompleteTask
               AddComplteTask={() => AddComplteTask(data.name, index)}
+              RemoveInCompleteTask={() =>
+                RemoveInCompleteTask(data.name, index)
+              }
               taskname={data.name}
             />
           </div>
@@ -62,16 +83,18 @@ export const Home = () => {
           <Divider className={classes.divider} component="li" variant="inset" />
         </div>
       )}
-{completeTask.length > 0 &&
+      {completeTask.length > 0 &&
         completeTask.map((data, index) => (
           <div key={index}>
             <CompletedTask
-            //   AddComplteTask={() => AddComplteTask(data.name, index)}
+              BacktoIncompltetasks={() =>
+                BacktoIncompltetasks(data.name, index)
+              }
+              RemoveCompletTasks={() => RemoveCompletTasks(data.name, index)}
               taskname={data.name}
             />
           </div>
         ))}
-    
 
       <Button onClick={handleremove} variant="contained" color="secondary">
         remove

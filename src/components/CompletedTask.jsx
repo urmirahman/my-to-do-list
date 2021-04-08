@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-
-export const CompletedTask = ({taskname}) => {
+import CancelIcon from '@material-ui/icons/Cancel';
+export const CompletedTask = ({taskname,BacktoIncompltetasks,RemoveCompletTasks}) => {
   const classes = useStyles();
   return (
     <Box
@@ -13,8 +13,9 @@ export const CompletedTask = ({taskname}) => {
       bgcolor="blue"
       alignItems="center"
     >
-      <CheckCircleIcon OnClick className={classes.icon} />
+      <CheckCircleIcon onClick={BacktoIncompltetasks} className={classes.icon} />
       {taskname}
+      <CancelIcon onClick={RemoveCompletTasks} className={classes.CrossIcon} />
     </Box>
   );
 };
@@ -31,6 +32,12 @@ const useStyles = makeStyles({
   },
   icon: {
     padding: "0px 10px",
+    cursor: "pointer",
+  },
+  CrossIcon: {
+    padding: "0px 10px",
+    cursor: "pointer",
+    marginLeft:"auto"
   },
   complete: {
     textDecoration: "line-through",
