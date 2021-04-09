@@ -1,10 +1,11 @@
-import { Button, Divider, Chip,Container } from "@material-ui/core";
+import { Button, Divider, Chip, Container } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { IncompleteTask } from "../components/IncompleteTask";
 import { CompletedTask } from "../components/CompletedTask";
 import { InputText } from "../components/InputText";
-import {useStylesHome} from '../styledComponent/StyledComponent'
+import { useStylesHome } from "../styledComponent/StyledComponent";
+
 export const Home = () => {
   const classes = useStylesHome();
   let value =
@@ -65,7 +66,7 @@ export const Home = () => {
     e.preventDefault();
     let p = [];
     setCompleteTask(p);
-    setRecyclebean(p)
+    setRecyclebean(p);
   };
 
   return (
