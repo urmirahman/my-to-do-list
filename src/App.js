@@ -10,9 +10,9 @@ import { Home } from "./pages/Home";
 
 function App() {
   return (
-    <Container className="App">
+    
      <Home/>
-    </Container>
+   
   );
 }
 
