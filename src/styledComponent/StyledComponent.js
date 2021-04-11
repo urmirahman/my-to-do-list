@@ -29,10 +29,11 @@ export const useStylesHome = makeStyles({
   "@global": {
     // You should target [class*="MuiButton-root"] instead if you nest themes.
     ".MuiChip-root": {
-      margin: "5px 10px 0px !important",
+      margin: "12px 10px 0px !important",
       height: "20px !important",
       fontWeight: 600,
-      background:"white"
+      background:"white",
+      padding:"0px 8px"
     },
   },
 });
@@ -40,10 +41,6 @@ export const useStylesHome = makeStyles({
 export const styledIncomplteTask = makeStyles({
   box: {
     background: "#F5F5F5" /* fallback for old browsers */,
-    // background:
-    //   "-webkit-linear-gradient(to right, #00c9ff, #92fe9d)" /* Chrome 10-25, Safari 5.1-6 */,
-    // background: " linear-gradient(to right, #00c9ff, #92fe9d)",
-
     border: "0.5px solid #9DBCF8",
     padding: "10px 15px",
     borderRadius: 5,

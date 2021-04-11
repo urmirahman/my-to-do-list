@@ -4,6 +4,8 @@ import { IncompleteTask } from "../components/IncompleteTask";
 import { CompletedTask } from "../components/CompletedTask";
 import { InputText } from "../components/InputText";
 import { useStylesHome } from "../styledComponent/StyledComponent";
+import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
+import DoneAllIcon from "@material-ui/icons/DoneAll";
 
 export const Home = () => {
   const classes = useStylesHome();
@@ -78,11 +80,11 @@ export const Home = () => {
   };
   const tasktype = [
     { id: "1", name: "Design" },
-    { id: "1", name: "FIXME" },
-    { id: "1", name: "Error" },
-    { id: "1", name: "BugFix" },
-    { id: "1", name: "Prototyping" },
-    { id: "1", name: "Other" },
+    { id: "2", name: "FIXME" },
+    { id: "3", name: "Error" },
+    { id: "4", name: "BugFix" },
+    { id: "5", name: "Prototyping" },
+    { id: "6", name: "Other" },
   ];
 
   return (
@@ -108,7 +110,7 @@ export const Home = () => {
         </div>
 
         <div className={classes.dividerTag}>
-          <Chip label="Tasks....." />{" "}
+          <Chip icon={<PlaylistAddCheckIcon />} label="Tasks..." />{" "}
           <Divider className={classes.divider} component="li" variant="inset" />
         </div>
         {incompleteTask.length > 0 &&
@@ -125,7 +127,7 @@ export const Home = () => {
           ))}
         {completeTask.length > 0 && (
           <div className={classes.dividerTag}>
-            <Chip label="Complete" />{" "}
+            <Chip icon={<DoneAllIcon />} label="Complete" />{" "}
             <Divider
               className={classes.divider}
               component="li"
