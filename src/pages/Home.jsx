@@ -1,6 +1,5 @@
-import { Button, Divider, Chip, Container } from "@material-ui/core";
+import { Box, Button, Divider, Chip, Container } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/styles";
 import { IncompleteTask } from "../components/IncompleteTask";
 import { CompletedTask } from "../components/CompletedTask";
 import { InputText } from "../components/InputText";
@@ -8,6 +7,7 @@ import { useStylesHome } from "../styledComponent/StyledComponent";
 
 export const Home = () => {
   const classes = useStylesHome();
+
   let value =
     JSON.parse(localStorage.getItem("tasklist")) === null
       ? []
@@ -61,7 +61,7 @@ export const Home = () => {
       //console.log(incompleteTask);
     }
   };
- 
+
   const handleremove = (e) => {
     e.preventDefault();
     let p = [];
@@ -69,57 +69,87 @@ export const Home = () => {
     setRecyclebean(p);
   };
 
-
-  const [store, setStore] = useState('')
+  const [store, setStore] = useState("");
   const handleChange = (e) => {
-    setStore(e.target.value)
-  }
+    setStore(e.target.value);
+  };
   const handleClick = () => {
     setIncompleteTask((old) => [...old, { name: store }]);
-  }
-  
+  };
+  const tasktype = [
+    { id: "1", name: "Design" },
+    { id: "1", name: "FIXME" },
+    { id: "1", name: "Error" },
+    { id: "1", name: "BugFix" },
+    { id: "1", name: "Prototyping" },
+    { id: "1", name: "Other" },
+  ];
 
   return (
-    <Container>
-      <InputText onkeydown={handlekey} onchange={handleChange} onclick={handleClick} />
-      <div className={classes.dividerTag}>
-        <Chip label="Tasks....." />{" "}
-        <Divider className={classes.divider} component="li" variant="inset" />
-      </div>
-      {incompleteTask.length > 0 &&
-        incompleteTask.map((data, index) => (
-          <div key={index}>
-            <IncompleteTask
-              AddComplteTask={() => AddComplteTask(data.name, index)}
-              RemoveInCompleteTask={() =>
-                RemoveInCompleteTask(data.name, index)
-              }
-              taskname={data.name}
+    <div className={classes.main}>
+      <Container>
+        <InputText
+          onkeydown={handlekey}
+          onchange={handleChange}
+          onclick={handleClick}
+        />
+
+        <div className={classes.tasktype}>
+          {tasktype.map((data) => (
+            <Chip
+              key={data.id}
+              onClick={(e) => {
+                let temp = `[${data.name}] `.concat(store);
+                setIncompleteTask((old) => [...old, { name: temp }]);
+              }}
+              label={data.name}
             />
-          </div>
-        ))}
-      {completeTask.length > 0 && (
+          ))}
+        </div>
+
         <div className={classes.dividerTag}>
-          <Chip label="Complete" />{" "}
+          <Chip label="Tasks....." />{" "}
           <Divider className={classes.divider} component="li" variant="inset" />
         </div>
-      )}
-      {completeTask.length > 0 &&
-        completeTask.map((data, index) => (
-          <div key={index}>
-            <CompletedTask
-              BacktoIncompltetasks={() =>
-                BacktoIncompltetasks(data.name, index)
-              }
-              RemoveCompletTasks={() => RemoveCompletTasks(data.name, index)}
-              taskname={data.name}
+        {incompleteTask.length > 0 &&
+          incompleteTask.map((data, index) => (
+            <div key={index}>
+              <IncompleteTask
+                AddComplteTask={() => AddComplteTask(data.name, index)}
+                RemoveInCompleteTask={() =>
+                  RemoveInCompleteTask(data.name, index)
+                }
+                taskname={data.name}
+              />
+            </div>
+          ))}
+        {completeTask.length > 0 && (
+          <div className={classes.dividerTag}>
+            <Chip label="Complete" />{" "}
+            <Divider
+              className={classes.divider}
+              component="li"
+              variant="inset"
             />
           </div>
-        ))}
+        )}
+        {completeTask.length > 0 &&
+          completeTask.map((data, index) => (
+            <div key={index}>
+              <CompletedTask
+                BacktoIncompltetasks={() =>
+                  BacktoIncompltetasks(data.name, index)
+                }
+                RemoveCompletTasks={() => RemoveCompletTasks(data.name, index)}
+                taskname={data.name}
+              />
+            </div>
+          ))}
 
-      <Button onClick={handleremove} variant="contained" color="secondary">
-        remove
-      </Button>
-    </Container>
+        <Button onClick={handleremove} variant="contained" color="secondary">
+          remove
+        </Button>
+      </Container>
+    </div>
   );
 };

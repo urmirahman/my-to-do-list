@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
@@ -15,6 +14,7 @@ export const InputText = (props) => {
     <TextField
       onKeyDown={props.onkeydown}
      onChange={props.onchange}
+     
       id="outlined-full-width"
       InputProps={{
         startAdornment: (
