@@ -1,18 +1,17 @@
 import { makeStyles } from "@material-ui/styles";
 
-
 export const useStylesHome = makeStyles({
   main: {
     background: "#CFEDB9",
-    minHeight:"100vh"
+    minHeight: "100vh",
   },
-  tasktype:{
-    padding:"10px 0px",
+  tasktype: {
+    padding: "10px 0px",
     ".MuiChip-root": {
       margin: "5px 10px 0px !important",
       height: "20px !important",
       fontWeight: 600,
-      background:"red !important"
+      background: "red !important",
     },
   },
   dividerTag: {
@@ -25,6 +24,12 @@ export const useStylesHome = makeStyles({
     marginLeft: "100px !important",
     zIndex: 10,
   },
+  nodata: {
+    height:"30vh",
+    display: "flex",
+    justifyContent:"center",
+    alignItems: "center",
+  },
 
   "@global": {
     // You should target [class*="MuiButton-root"] instead if you nest themes.
@@ -32,8 +37,8 @@ export const useStylesHome = makeStyles({
       margin: "12px 10px 0px !important",
       height: "20px !important",
       fontWeight: 600,
-      background:"white",
-      padding:"0px 8px"
+      background: "white",
+      padding: "0px 8px",
     },
   },
 });
@@ -49,13 +54,13 @@ export const styledIncomplteTask = makeStyles({
   icon: {
     padding: "0px 10px",
     cursor: "pointer",
-    color:"#8bc34a"
+    color: "#8bc34a",
   },
   CrossIcon: {
     padding: "0px 10px",
     cursor: "pointer",
     marginLeft: "auto",
-    color:"rgb(245, 0, 87)"
+    color: "rgb(245, 0, 87)",
   },
   incomplete: {},
   complete: {
@@ -78,13 +83,13 @@ export const styledComplteTask = makeStyles({
   icon: {
     padding: "0px 10px",
     cursor: "pointer",
-    color:"#8bc34a"
+    color: "#8bc34a",
   },
   CrossIcon: {
     padding: "0px 10px",
     cursor: "pointer",
     marginLeft: "auto",
-    color:"rgb(245, 0, 87)"
+    color: "rgb(245, 0, 87)",
   },
   complete: {
     textDecoration: "line-through",

@@ -113,7 +113,7 @@ export const Home = () => {
           <Chip icon={<PlaylistAddCheckIcon />} label="Tasks..." />{" "}
           <Divider className={classes.divider} component="li" variant="inset" />
         </div>
-        {incompleteTask.length > 0 &&
+        {incompleteTask.length > 0 ?
           incompleteTask.map((data, index) => (
             <div key={index}>
               <IncompleteTask
@@ -124,7 +124,7 @@ export const Home = () => {
                 taskname={data.name}
               />
             </div>
-          ))}
+          )):<Box className={classes.nodata}>No task added yet</Box> }
         {completeTask.length > 0 && (
           <div className={classes.dividerTag}>
             <Chip icon={<DoneAllIcon />} label="Complete" />{" "}
@@ -148,9 +148,9 @@ export const Home = () => {
             </div>
           ))}
 
-        <Button onClick={handleremove} variant="contained" color="secondary">
+        {/* <Button onClick={handleremove} variant="contained" color="secondary">
           remove
-        </Button>
+        </Button> */}
       </Container>
     </div>
   );
