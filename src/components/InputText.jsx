@@ -8,14 +8,16 @@ import { styledInputText } from "../styledComponent/StyledComponent";
 export const InputText = (props) => {
   const classes = styledInputText();
 
-
+ let err = props.error
+ let error = (err.length > 0 && err.length < 4 ) ?"Too small" :""
+ console.log(error)
   return (
     <>
     <TextField
       onKeyDown={props.onkeydown}
      onChange={props.onchange}
-     required={true}
-      id="outlined-full-width"
+     required
+     helperText = {`${error}`}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

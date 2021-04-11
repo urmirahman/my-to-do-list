@@ -11,8 +11,9 @@ export const Home = () => {
   const classes = useStylesHome();
 
   let value =
-    JSON.parse(localStorage.getItem("tasklist")) === null
-      ? []
+    localStorage.getItem("tasklist") === null
+      ? [{name:"[Others] add your first to-do"},
+      {name:"[Design] Design your first app"}]
       : JSON.parse(localStorage.getItem("tasklist"));
   let value2 =
     JSON.parse(localStorage.getItem("completeTask")) === null
@@ -32,7 +33,7 @@ export const Home = () => {
     localStorage.setItem("tasklist", JSON.stringify(incompleteTask));
     localStorage.setItem("completeTask", JSON.stringify(completeTask));
     localStorage.setItem("recycletasks", JSON.stringify(Recyclebean));
-    // console.log(completeTask);
+     console.log(incompleteTask);
     // console.log(Recyclebean);
   }, [incompleteTask, completeTask, Recyclebean]);
 
@@ -78,6 +79,8 @@ export const Home = () => {
   const handleClick = () => {
     setIncompleteTask((old) => [...old, { name: store }]);
   };
+  
+
   const tasktype = [
     { id: "1", name: "Design" },
     { id: "2", name: "FIXME" },
@@ -86,11 +89,12 @@ export const Home = () => {
     { id: "5", name: "Prototyping" },
     { id: "6", name: "Other" },
   ];
-
+let error = (+store.lenght)
   return (
     <div className={classes.main}>
       <Container>
         <InputText
+        error={store}
           onkeydown={handlekey}
           onchange={handleChange}
           onclick={handleClick}
