@@ -7,12 +7,7 @@ export const useStylesHome = makeStyles({
   },
   tasktype: {
     padding: "10px 0px",
-    ".MuiChip-root": {
-      margin: "5px 10px 0px !important",
-      height: "20px !important",
-      fontWeight: 600,
-      background: "red !important",
-    },
+   
   },
   dividerTag: {
     marginTop: "-10px",
@@ -45,7 +40,7 @@ export const useStylesHome = makeStyles({
 
 export const styledIncomplteTask = makeStyles({
   box: {
-    background: "#F5F5F5" /* fallback for old browsers */,
+   
     border: "0.5px solid #9DBCF8",
     padding: "10px 15px",
     borderRadius: 5,
@@ -70,11 +65,6 @@ export const styledIncomplteTask = makeStyles({
 
 export const styledComplteTask = makeStyles({
   box: {
-    background: "#F5F5F5",
-    // background: "#00c9ff" /* fallback for old browsers */,
-    // background:
-    //   "-webkit-linear-gradient(to right, #00c9ff, #92fe9d)" /* Chrome 10-25, Safari 5.1-6 */,
-    // background: " linear-gradient(to right, #00c9ff, #92fe9d)",
     border: "0.5px solid #9DBCF8",
     padding: "10px 15px",
     borderRadius: 5,
