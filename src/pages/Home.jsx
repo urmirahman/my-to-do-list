@@ -33,7 +33,7 @@ export const Home = () => {
     localStorage.setItem("tasklist", JSON.stringify(incompleteTask));
     localStorage.setItem("completeTask", JSON.stringify(completeTask));
     localStorage.setItem("recycletasks", JSON.stringify(Recyclebean));
-     console.log(incompleteTask);
+     //console.log(incompleteTask);
     // console.log(Recyclebean);
   }, [incompleteTask, completeTask, Recyclebean]);
 
@@ -84,12 +84,12 @@ export const Home = () => {
   const tasktype = [
     { id: "1", name: "Design" },
     { id: "2", name: "FIXME" },
-    { id: "3", name: "Error" },
+    { id: "3", name: "Feature" },
     { id: "4", name: "BugFix" },
     { id: "5", name: "Prototyping" },
     { id: "6", name: "Other" },
   ];
-let error = (+store.lenght)
+  
   return (
     <div className={classes.main}>
       <Container>
