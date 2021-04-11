@@ -14,7 +14,7 @@ export const InputText = (props) => {
     <TextField
       onKeyDown={props.onkeydown}
      onChange={props.onchange}
-     
+     required={true}
       id="outlined-full-width"
       InputProps={{
         startAdornment: (
