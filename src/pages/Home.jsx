@@ -30,8 +30,8 @@ export const Home = () => {
     localStorage.setItem("tasklist", JSON.stringify(incompleteTask));
     localStorage.setItem("completeTask", JSON.stringify(completeTask));
     localStorage.setItem("recycletasks", JSON.stringify(Recyclebean));
-    console.log(completeTask);
-    console.log(Recyclebean);
+    // console.log(completeTask);
+    // console.log(Recyclebean);
   }, [incompleteTask, completeTask, Recyclebean]);
 
   const AddComplteTask = (taskname, index) => {
@@ -61,7 +61,7 @@ export const Home = () => {
       //console.log(incompleteTask);
     }
   };
-
+ 
   const handleremove = (e) => {
     e.preventDefault();
     let p = [];
@@ -69,9 +69,19 @@ export const Home = () => {
     setRecyclebean(p);
   };
 
+
+  const [store, setStore] = useState('')
+  const handleChange = (e) => {
+    setStore(e.target.value)
+  }
+  const handleClick = () => {
+    setIncompleteTask((old) => [...old, { name: store }]);
+  }
+  
+
   return (
     <Container>
-      <InputText onkeydown={handlekey} />
+      <InputText onkeydown={handlekey} onchange={handleChange} onclick={handleClick} />
       <div className={classes.dividerTag}>
         <Chip label="Tasks....." />{" "}
         <Divider className={classes.divider} component="li" variant="inset" />
