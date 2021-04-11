@@ -11,7 +11,6 @@ export const CompletedTask = ({taskname,BacktoIncompltetasks,RemoveCompletTasks}
       className={`${classes.box} ${classes.complete}`}
       p={1}
       display="flex"
-      bgcolor="blue"
       alignItems="center"
     >
       <CheckCircleIcon onClick={BacktoIncompltetasks} className={classes.icon} />

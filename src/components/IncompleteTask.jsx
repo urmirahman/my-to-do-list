@@ -13,7 +13,6 @@ export const IncompleteTask = ({ taskname,AddComplteTask,RemoveInCompleteTask })
       className={`${classes.box} ${classes.incomplete}`}
       p={1}
       display="flex"
-      bgcolor="blue"
       alignItems="center"
     >
       <CheckCircleOutlineOutlinedIcon onClick={AddComplteTask} className={classes.icon} />
