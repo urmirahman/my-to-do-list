@@ -7,12 +7,6 @@ export const useStylesHome = makeStyles({
   },
   tasktype: {
     padding: "10px 0px",
-    ".MuiChip-root": {
-      margin: "5px 10px 0px !important",
-      height: "20px !important",
-      fontWeight: 600,
-     
-    },
   },
   dividerTag: {
     marginTop: "-10px",
@@ -37,7 +31,7 @@ export const useStylesHome = makeStyles({
       margin: "12px 10px 0px !important",
       height: "20px !important",
       fontWeight: 600,
-      background: "white",
+      background: "white !important",
       padding: "0px 8px",
     },
   },
