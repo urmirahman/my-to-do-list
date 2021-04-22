@@ -2,12 +2,35 @@ import { makeStyles } from "@material-ui/styles";
 
 export const useStylesHome = makeStyles({
   main: {
-    background: "#CFEDB9",
+    background: "white",
     minHeight: "100vh",
+    paddingBottom:"10vh",
+    position:"static"
   },
+  footer:{
+    position:"absolute",
+    top:"0",
+    left:"0",
+    background:"#cfcfcf",
+    padding:"10px",
+    width:"100%",
+    display:"flex",
+    justifyContent:"center"
+  }
+  ,
   tasktype: {
     padding: "10px 0px",
+    display:"flex",
+    flexWrap:"wrap"
   },
+  alert:{
+    display:"visible"
+  },
+  noalert:{
+   display:"none"
+    
+  },
+
   dividerTag: {
     marginTop: "-10px",
     padding: "10px 0px",
@@ -17,6 +40,7 @@ export const useStylesHome = makeStyles({
   divider: {
     marginLeft: "100px !important",
     zIndex: 10,
+    background:"#C4C4C4"
   },
   nodata: {
     height:"30vh",
@@ -31,30 +55,32 @@ export const useStylesHome = makeStyles({
       margin: "12px 10px 0px !important",
       height: "20px !important",
       fontWeight: 600,
-      background: "white !important",
+      background: "transparent !important",
       padding: "0px 8px",
+      // color:"white"
     },
   },
 });
 
 export const styledIncomplteTask = makeStyles({
   box: {
-    background: "#F5F5F5",
+    background: "transparent",
     border: "0.5px solid #9DBCF8",
     padding: "10px 15px",
     borderRadius: 5,
     margin: "10px 0px !important",
+    // color:"white"
   },
   icon: {
     padding: "0px 10px",
     cursor: "pointer",
-    color: "#8bc34a",
+    color: "#9DBCF8",
   },
   CrossIcon: {
     padding: "0px 10px",
     cursor: "pointer",
     marginLeft: "auto",
-    color: "rgb(245, 0, 87)",
+    color: "#ADADAD",
   },
   incomplete: {},
   complete: {
@@ -64,23 +90,24 @@ export const styledIncomplteTask = makeStyles({
 
 export const styledComplteTask = makeStyles({
   box: {
-    background: "#F5F5F5",
+    background: "transparent",
     
     border: "0.5px solid #9DBCF8",
     padding: "10px 15px",
     borderRadius: 5,
     margin: "10px 0px",
+    // color:"white"
   },
   icon: {
     padding: "0px 10px",
     cursor: "pointer",
-    color: "#8bc34a",
+    color: "#9DBCF8",
   },
   CrossIcon: {
     padding: "0px 10px",
     cursor: "pointer",
     marginLeft: "auto",
-    color: "rgb(245, 0, 87)",
+    color: "#ADADAD",
   },
   complete: {
     textDecoration: "line-through",
@@ -95,6 +122,9 @@ export const styledInputText = makeStyles({
     },
     ".MuiFormHelperText-root ":{
       color:"red"
-    }
+    },
+    // ".MuiInputBase-input":{
+    //   color:"white"
+    // }
   },
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@material-ui/core";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
-import CancelIcon from '@material-ui/icons/Cancel';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import {styledIncomplteTask} from '../styledComponent/StyledComponent'
 export const IncompleteTask = ({ taskname,AddComplteTask,RemoveInCompleteTask }) => {
   const classes = styledIncomplteTask();
@@ -17,7 +17,7 @@ export const IncompleteTask = ({ taskname,AddComplteTask,RemoveInCompleteTask })
     >
       <CheckCircleOutlineOutlinedIcon onClick={AddComplteTask} className={classes.icon} />
       {taskname}
-      <CancelIcon onClick={RemoveInCompleteTask} className={classes.CrossIcon} />
+      <DeleteForeverIcon onClick={RemoveInCompleteTask} className={classes.CrossIcon} />
     </Box>
   );
 };

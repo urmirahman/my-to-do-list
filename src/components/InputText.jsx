@@ -9,37 +9,23 @@ export const InputText = (props) => {
   const classes = styledInputText();
 
  let err = props.error
- let error = (err.length > 0 && err.length < 4 ) ?"Too small" :""
+ let error = (err.length > 0 && err.length < 4 ) ?"Too small" :err ==="empty" ? "please enter something" :""
  console.log(error)
   return (
-    <>
+  <div>
+ <div style={{display:"flex",alignItems:"center"}}>
     <TextField
       onKeyDown={props.onkeydown}
      onChange={props.onchange}
-     required
-     helperText = {`${error}`}
+     error={err.length > 0 && err.length < 4 ? true : err ==="empty"? true :false}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
             <AddOutlinedIcon style={{ color: "gray" }} />
           </InputAdornment>
         ),
-        endAdornment: (
-          <InputAdornment position="end">
-            <PlaylistAddIcon
-             onClick={props.onclick}
-              style={{
-                borderRadius: "5px",
-                color: "white",
-                cursor: "pointer",
-                background: "#f50057",
-                padding: "3px 10px",
-              }}
-            />
-          </InputAdornment>
-        ),
       }}
-      style={{ margin: 8 }}
+      style={{ margin: 8,borderRadius: "2px"}}
       placeholder="Add task"
       fullWidth
       margin="normal"
@@ -48,6 +34,19 @@ export const InputText = (props) => {
       }}
       variant="outlined"
       />
-      </>
+      <PlaylistAddIcon
+             onClick={props.onclick}
+              style={{
+                borderRadius: "2px",
+                color: "white",
+                cursor: "pointer",
+                background: "#C4C4C4",
+                padding: "8px 18px",
+              }}
+            />
+      </div>
+      <span style={{margin:8,color:"red"}}>{error}</span>
+  </div>
+   
   );
 };

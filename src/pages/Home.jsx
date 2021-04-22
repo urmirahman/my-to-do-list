@@ -5,6 +5,7 @@ import { CompletedTask } from "../components/CompletedTask";
 import { InputText } from "../components/InputText";
 import { useStylesHome } from "../styledComponent/StyledComponent";
 import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
+
 import DoneAllIcon from "@material-ui/icons/DoneAll";
 
 export const Home = () => {
@@ -12,8 +13,8 @@ export const Home = () => {
 
   let value =
     localStorage.getItem("tasklist") === null
-      ? [{name:"[Others] add your first to-do"},
-      {name:"[Design] Design your first app"}]
+      ? [{name:"[Others] add your first to-do",type:"Others"},
+      {name:"[Design] Design your first app",type:"Design"}]
       : JSON.parse(localStorage.getItem("tasklist"));
   let value2 =
     JSON.parse(localStorage.getItem("completeTask")) === null
@@ -60,7 +61,10 @@ export const Home = () => {
   const handlekey = (e) => {
     let temp = e.target.value;
     if (e.key === "Enter") {
-      setIncompleteTask((old) => [...old, { name: temp }]);
+      if(temp.length>3 ){
+        setIncompleteTask((old) => [...old, { name: temp }]);
+      }
+     
       //console.log(incompleteTask);
     }
   };
@@ -77,22 +81,35 @@ export const Home = () => {
     setStore(e.target.value);
   };
   const handleClick = () => {
-    setIncompleteTask((old) => [...old, { name: store }]);
+    if(store.length>3 ){
+      setIncompleteTask((old) => [...old, { name: store }]);
+      
+    }
+    else{
+      setStore("empty")
+    }
   };
   
 
   const tasktype = [
-    { id: "1", name: "Design" },
-    { id: "2", name: "FIXME" },
-    { id: "3", name: "Feature" },
-    { id: "4", name: "BugFix" },
-    { id: "5", name: "Prototyping" },
-    { id: "6", name: "Other" },
+    { id: "1", name: "Design",bg:"#DF82C5" },
+    { id: "2", name: "FIXME",bg:"#F46262" },
+    { id: "3", name: "Feature",bg:"#E37AEC" },
+    { id: "4", name: "BugFix",bg:"#E8719C" },
+    { id: "5", name: "Prototyping",bg:"#5BB3CF" },
+    { id: "6", name: "Build",bg:"#42C5AD" },
+    { id: "7", name: "Other",bg:"#8E8E8E" },
   ];
   
   return (
     <div className={classes.main}>
       <Container>
+        <div style={{display:"flex",justifyContent:"center",margin:"50px 0px 10px"}}>
+          <h1>Personal to-do list 🚀</h1>
+        </div>
+        <div style={{display:"flex",justifyContent:"center",margin:"10px 0px"}}>
+          <span>type a todo and "Enter" / click 👉</span>
+        </div>
         <InputText
         error={store}
           onkeydown={handlekey}
@@ -100,21 +117,22 @@ export const Home = () => {
           onclick={handleClick}
         />
 
-        <div className={classes.tasktype}>
+        <div className={` ${classes.tasktype} ${store.length > 3 ? classes.alert:classes.noalert } `}>
           {tasktype.map((data) => (
-            <Chip
+            <span
+            style={{padding:"5px 15px",margin:"3px 10px",background:data.bg,color:"white",borderRadius:"50px"}}
               key={data.id}
               onClick={(e) => {
                 let temp = `[${data.name}] `.concat(store);
                 setIncompleteTask((old) => [...old, { name: temp }]);
               }}
-              label={data.name}
-            />
+             
+            >{data.name}</span>
           ))}
         </div>
 
         <div className={classes.dividerTag}>
-          <Chip icon={<PlaylistAddCheckIcon />} label="Tasks..." />{" "}
+          <Chip icon={<PlaylistAddCheckIcon style={{color:"#2BCB28"}} />} label="Tasks..." />{" "}
           <Divider className={classes.divider} component="li" variant="inset" />
         </div>
         {incompleteTask.length > 0 ?
@@ -131,7 +149,7 @@ export const Home = () => {
           )):<Box className={classes.nodata}>No task added yet</Box> }
         {completeTask.length > 0 && (
           <div className={classes.dividerTag}>
-            <Chip icon={<DoneAllIcon />} label="Complete" />{" "}
+            <Chip icon={<DoneAllIcon style={{color:"#2BCB28"}}/>} label="Complete" />{" "}
             <Divider
               className={classes.divider}
               component="li"
@@ -156,6 +174,7 @@ export const Home = () => {
           remove
         </Button> */}
       </Container>
+    <footer className={classes.footer} >Made with  💜  by Urmi Rahman  © 2021</footer>
     </div>
   );
 };
