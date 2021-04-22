@@ -120,7 +120,7 @@ export const Home = () => {
         <div className={` ${classes.tasktype} ${store.length > 3 ? classes.alert:classes.noalert } `}>
           {tasktype.map((data) => (
             <span
-            style={{padding:"5px 15px",margin:"3px 10px",background:data.bg,color:"white",borderRadius:"50px"}}
+            style={{padding:"5px 15px", cursor: "pointer",margin:"3px 10px",background:data.bg,color:"white",borderRadius:"50px"}}
               key={data.id}
               onClick={(e) => {
                 let temp = `[${data.name}] `.concat(store);
